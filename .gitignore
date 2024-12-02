@@ -1,0 +1,9 @@
+packages
+out
+.vs
+*.psess
+/BankTest.API/bin
+/BankTest.API/obj
+/BankTest.UnitTests/bin
+/BankTest.UnitTests/obj
+
