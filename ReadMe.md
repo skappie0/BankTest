@@ -25,7 +25,7 @@ Follow these steps to set up and run the API via Visual Studio 2022:
    - Modify the connection string if necessary to match your local environment.
 ## Authorization
 - Open **[POST] /Login/UserLogin**
-- Use
+- **Use**
 ```
 {
   "email": "bank@bank.com",
@@ -41,20 +41,23 @@ Follow these steps to set up and run the API via Visual Studio 2022:
 ```
 ## Transactions
 ### Default
-- Created User 'bank' and Bank Account for this user.
-- Created User 'user1' and Bank Account for this user.
-- Created Transaction from 'bank' to 'user1' for 100 conventional units.
+- Created User `bank` and Account for this user.
+- Created User `user1` and Account for this user.
+- Created Transaction from `bank` to `user1` for 100 conventional units.
 
 ## API Transaction Methods
 
 This API supports three different transaction types. Each transaction is handled by a specific method with the following parameters:
+
+### Note
+Methods **1** and **2** must be called by authorized **Bank Account**(eMail: `bank@bank.com`, Password: `bank111`)
 
 ### 1) CreateDeposit
 
 This method allows you to create a deposit transaction.
 
 #### Parameters:
-- **eMail**: The email of the account holder making the deposit.
+- **eMail**: The email of the account holder making the deposit for.
 - **depositAccount**: The account number where the deposit will be made.
 - **amount**: The amount to deposit.
 - **text**: A description or note related to the deposit.
@@ -74,7 +77,7 @@ This method allows you to create a deposit transaction.
 This method allows you to create a withdrawal transaction.
 
 #### Parameters:
-- **eMail**: The email of the account holder making the withdrawal.
+- **eMail**: The email of the account holder making the withdrawal from.
 - **withdrawAccount**: The account number from which the withdrawal will be made.
 - **amount**: The amount to withdraw.
 - **text**: A description or note related to the withdrawal.
