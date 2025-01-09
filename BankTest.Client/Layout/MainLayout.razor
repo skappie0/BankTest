@@ -1,0 +1,42 @@
+﻿@inject TokenAuthenticationStateProvider TokenProvider
+@inherits LayoutComponentBase
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+            <AuthorizeView>
+                Logged in as @context.User.Identity.Name
+                <button class="btn btn-sm btn-outline-dark" @onclick="@(() => TokenProvider.SetTokenAsync(null))">Logout</button>
+            </AuthorizeView>
+        </div>
+
+        <article class="content px-4">
+            <ErrorBoundary @ref="errorBoundary">
+                <ChildContent>
+                    @Body
+                </ChildContent>
+                <ErrorContent Context="exception">
+                    <div class="alert alert-danger">
+                        <h3>@exception.GetType()</h3>
+                        <h3>@exception.Message</h3>
+                        <button class="btn btn-info" @onclick="() => errorBoundary?.Recover()">Refresh</button>
+                    </div>
+                </ErrorContent>
+            </ErrorBoundary>
+        </article>
+    </main>
+</div>
+<MudDialogProvider />
+<MudSnackbarProvider />
+<MudPopoverProvider />
+@code {
+    private ErrorBoundary? errorBoundary;
+
+    protected override async Task OnInitializedAsync()
+    {
+        errorBoundary = new ErrorBoundary();
+    }
+}

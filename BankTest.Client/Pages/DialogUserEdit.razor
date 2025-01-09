@@ -1,0 +1,22 @@
+﻿@using BankTest.Library.Models.Dto
+
+<div class="modal-body">
+    <h3>Edit Item</h3>
+    <EditForm Model="@user">
+        <div>
+            <label>Name</label>
+            <InputText id="itemName" @bind-Value="user.Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="itemDescription">Description</label>
+            <InputText @bind-Value="user.Login"/>
+        </div>
+        <button>Save</button>
+    </EditForm>
+</div>
+
+@code {
+	[CascadingParameter] MudDialogInstance? MudDialog { get; set; }
+	[Parameter] public UserInfo user { get; set; } = new UserInfo();
+	[Parameter] public List<UserInfo> userInfos { get; set; } = new List<UserInfo>();
+}

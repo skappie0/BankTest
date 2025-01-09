@@ -80,8 +80,8 @@ namespace BankTest.API.Controllers
         }
         [HttpPost]
         [Authorize]
-        [Route("CreateWithrdaw")]
-        public async Task<IActionResult> CreateWithrdaw([FromBody] WithdrawRequest withdrawRequest)
+        [Route("CreateWithdraw")]
+        public async Task<IActionResult> CreateWithdraw([FromBody] WithdrawRequest withdrawRequest)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -126,7 +126,7 @@ namespace BankTest.API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"TransactionController/CreateWithrdaw AccountCredit: 11111111, " +
+                _logger.LogError(ex, $"TransactionController/CreateWithdraw AccountCredit: 11111111, " +
                     $"AccountDebit: {withdrawRequest.WithdrawAccount}, Amount: {withdrawRequest.Amount}");
                 return StatusCode(500, ex.Message);
             }

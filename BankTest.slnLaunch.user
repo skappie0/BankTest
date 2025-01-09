@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "BankTest.API\\BankTest.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "BankTest.Client\\BankTest.Client.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

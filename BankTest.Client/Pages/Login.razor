@@ -1,0 +1,53 @@
+﻿@page "/login"
+@inject HttpClient Http
+@inject TokenAuthenticationStateProvider AuthStateProvider
+
+
+@*Make it clear with full Blazor Code via MudBlazor docs*@
+
+<div class="container col-6">
+    @if (loginFailure)
+    {
+        <MudAlert Severity="Severity.Error" Variant="Variant.Outlined" Class="mb-4">
+            Your credentials did not work. Please try again.
+        </MudAlert>
+    }
+    <MudPaper Elevation="2" Class="pa-4">
+        <MudText Typo="Typo.h5" Class="mb-2">Login</MudText>
+        <EditForm @ref="loginform" Model="credentials" OnValidSubmit="SubmitCredentials">
+            <DataAnnotationsValidator />
+
+            <!-- Email Input -->
+            <MudTextField Label="Email Address" T="string" @bind-Value="credentials.Email" Required="true" />
+
+            <!-- Password Input -->
+            <MudTextField Label="Password" T="string" InputType="InputType.Password" @bind-Value="credentials.Password" Required="true" />
+
+            <MudButton @onclick="SubmitCredentials" Variant="Variant.Outlined" Color="Color.Primary" Type="Submit">
+                Submit
+            </MudButton>
+        </EditForm>
+    </MudPaper>
+</div>
+
+@code {
+    AuthRequest credentials = new AuthRequest();
+    //AuthResponse response = new AuthResponse();
+    bool loginFailure;
+
+    EditForm loginform { get; set; }
+
+    async Task SubmitCredentials()
+    {
+        var result = await Http.PostAsJsonAsync(@"https://localhost:7281/login/UserLogin", credentials);
+
+        var loginResponseContent = await result.Content.ReadFromJsonAsync<AuthResponse>();
+        if (loginResponseContent != null && !string.IsNullOrEmpty(loginResponseContent.Token) && loginResponseContent.Expiration != null)
+        {
+            await AuthStateProvider.SetTokenAsync(loginResponseContent.Token, (DateTime)loginResponseContent.Expiration);
+            loginFailure = true;
+        }
+        else
+            loginFailure = false;
+    }
+}

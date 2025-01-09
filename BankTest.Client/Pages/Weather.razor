@@ -1,0 +1,67 @@
+﻿@page "/weather"
+@using BankTest.Client.Services
+@using BankTest.Library.Models.Dto
+@inject LoginAPI loginAPI
+@inject HttpClient Http
+@inject TokenAuthenticationStateProvider tokenProvider
+@attribute [Authorize]
+@inject IDialogService DialogService
+
+<PageTitle>Weather</PageTitle>
+
+@*TODO: Change to Blazor components*@
+
+<h1>Weather</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@* <table class="table">
+    <thead>
+        <tr>
+            <th>User</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sss in responseContent)
+        {
+            <tr>
+                <td>@sss</td>
+            </tr>
+        }
+    </tbody>
+</table> *@
+@if (responseContent != null)
+{
+    <MudDataGrid T="UserInfo" Items="responseContent">
+        <Columns>
+            <PropertyColumn Property="x => x.Login"/>
+            <PropertyColumn Property="x => x.EMail"/>
+            <PropertyColumn Property="x => x.Name"/>
+            <PropertyColumn Property="x => x.Password"/>
+            <TemplateColumn StickyRight="true">
+                <CellTemplate>
+                    <MudStack Row>
+                        <MudIconButton Icon="@Icons.Material.Outlined.Edit" Size="@Size.Small" OnClick="@((e) => OnEditClick(context.Item))" />
+                    </MudStack>
+                </CellTemplate>
+            </TemplateColumn>
+        </Columns>
+    </MudDataGrid>
+}
+
+@code {
+    private List<UserInfo>? responseContent;
+
+    protected override async Task OnInitializedAsync()
+    {
+        responseContent = await loginAPI.UserAll(tokenProvider);
+    }
+
+    public async Task OnEditClick(UserInfo user)
+    {
+        var parameters = new DialogParameters { ["user"] = user };
+        parameters.Add("user", user);
+        var dialog = DialogService.Show<DialogUserEdit>("Edit", parameters).Result;
+
+    }
+}

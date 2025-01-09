@@ -4,6 +4,7 @@ using BankTest.API.Models.Helpers;
 using BankTest.API.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using BankTest.Library.Models.Dto;
 
 namespace BankTest.API.Controllers
 {
@@ -110,6 +111,31 @@ namespace BankTest.API.Controllers
                 _logger.LogError(ex, $"UserController/DeleteUser Id: {id}");
                 return StatusCode(500, ex.Message);
             }
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("GetUsers")]
+        public async Task<IActionResult> GetUsers()
+        {
+            List<string> UsersNames = _context.Users.Select(uName => uName.Name).ToList();
+            return Ok(UsersNames);
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("GetUserDto")]
+        public async Task<IActionResult> GetUserDto()
+        {
+            List<UserInfo> outAll = new List<UserInfo>();
+            outAll = _context.Users.Select(x => new UserInfo
+            {
+                EMail = x.EMail,
+                Login = x.Login,
+                Name = x.Name,
+                Password = x.Password
+            }).ToList();
+            return Ok(outAll);
         }
     }
 }

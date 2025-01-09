@@ -1,6 +1,7 @@
 ﻿using BankTest.API.Controllers;
 using BankTest.API.Models;
 using BankTest.API.Services;
+using BankTest.Library.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -76,10 +77,10 @@ namespace BankTest.UnitTests
             NUnit.Framework.Assert.That(result, Is.Not.Null);
             NUnit.Framework.Assert.That(result.Result, Is.InstanceOf<UnauthorizedResult>());
         }
-        [TearDown]
+        /*[TearDown]
         public void TearDown()
         {
             _bankTestDBService?.Dispose();
-        }
+        }*/
     }
 }

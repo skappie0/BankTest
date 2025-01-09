@@ -1,5 +1,6 @@
 ﻿using BankTest.API.Models;
 using BankTest.API.Services;
+using BankTest.Library.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +33,7 @@ namespace BankTest.API.Controllers
         {
             return Ok(12345);
         }
+
         [HttpPost]
         [Route("UserLogin")]
         public ActionResult<AuthResponse> UserLogin(AuthRequest request)

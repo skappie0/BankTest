@@ -1,0 +1,13 @@
+C:\Users\wwdw\Desktop\BankTest\BankTest.Library\bin\Debug\net8.0\BankTest.Library.deps.json
+C:\Users\wwdw\Desktop\BankTest\BankTest.Library\bin\Debug\net8.0\BankTest.Library.dll
+C:\Users\wwdw\Desktop\BankTest\BankTest.Library\bin\Debug\net8.0\BankTest.Library.pdb
+C:\Users\wwdw\Desktop\BankTest\BankTest.Library\obj\Debug\net8.0\BankTest.Library.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\wwdw\Desktop\BankTest\BankTest.Library\obj\Debug\net8.0\BankTest.Library.AssemblyInfoInputs.cache
+C:\Users\wwdw\Desktop\BankTest\BankTest.Library\obj\Debug\net8.0\BankTest.Library.AssemblyInfo.cs
+C:\Users\wwdw\Desktop\BankTest\BankTest.Library\obj\Debug\net8.0\BankTest.Library.csproj.CoreCompileInputs.cache
+C:\Users\wwdw\Desktop\BankTest\BankTest.Library\obj\Debug\net8.0\BankTest.Library.sourcelink.json
+C:\Users\wwdw\Desktop\BankTest\BankTest.Library\obj\Debug\net8.0\BankTest.Library.dll
+C:\Users\wwdw\Desktop\BankTest\BankTest.Library\obj\Debug\net8.0\refint\BankTest.Library.dll
+C:\Users\wwdw\Desktop\BankTest\BankTest.Library\obj\Debug\net8.0\BankTest.Library.pdb
+C:\Users\wwdw\Desktop\BankTest\BankTest.Library\obj\Debug\net8.0\ref\BankTest.Library.dll
+C:\Users\wwdw\Desktop\BankTest\BankTest.Library\obj\Debug\net8.0\BankTest.Library.csproj.AssemblyReference.cache
